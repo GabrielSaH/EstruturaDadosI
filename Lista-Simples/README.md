@@ -1,6 +1,7 @@
 Funções da lista:
 
 void addNo : Adiciona um novo nó no final da lista
+
 void printLista : Percorre a lista mostrando os valores armazenados em ordem.
 void retiraUlrimo : Retira o ultimo elemento da lista
 void retiraValor : Retira a primeira ocorrencia do valor argumento
