@@ -8,7 +8,7 @@ void retiraUlrimo : Retira o ultimo elemento da lista
 
 void retiraValor : Retira a primeira ocorrencia do valor argumento
 
-Void retiraTodosValor : Retira todas as ocorrencias do valor argumento
+Void retiraTodosValor : Retira todas as ocorrencias do valor argumento\n
 
 void addNoInicio : Adiciona um novo nó no inicio da lista
 
