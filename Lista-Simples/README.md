@@ -24,4 +24,5 @@ O heading da lista NÂO é um ponteiro, porem, todos os outros nós são ponteir
 a operação addno e buscaValor são feitas usando recursão.  
 buscaValor foi implementada puramente por que foi pedido em aula.  
 as funçoes getValor e setValor foram feitas por que sem elas buscaValor nao teria nenhuma utilidade... isso porque os atributos da classe são privados.  
+index negativo iniciara a contagem de tras para frente ex: minhaLista[-1] retorna o valor da ultima posição da lista.  
 
