@@ -2,6 +2,8 @@
 
 class no {
 private:
+
+public:
     no* next;
     int valor;
 
@@ -146,6 +148,31 @@ public:
 
     };
 
+    no* buscaValor(int v) {
+        if (this == nullptr) return nullptr;
+
+        if (this->valor == v) {
+            return this;
+        }
+
+        return this->next->buscaValor(v);
+    }
+
+    int buscaIndex(int v) {
+        no* atual = this;
+        int index = 0;
+
+        while (atual != nullptr) {
+            if (atual->valor == v) {
+                return index;
+            };
+
+            atual = atual->next;
+            index++;
+        };
+        return NULL;
+    }
+
     int& operator[](int index) {
         no* atual = this;
 
@@ -158,7 +185,6 @@ public:
         return atual->valor;
     };
 
-
     
     void operator=(int v) {
         this->valor = v;
@@ -169,34 +195,77 @@ public:
 
 int main() {
 
-    no teste = no(1);
+    // Lista Inicial: 1, 2, 3, 4, 5, 6, 6, 7, 8
 
-    teste.addNo(2);
-    teste.addNo(3);
-    teste.addNo(4);
-    teste.addNo(5);
-    teste.addNo(6);
-    teste.addNo(6);
-    teste.addNo(7);
-    teste.addNo(8);
+    no lista= no(1);
+    lista.addNo(2);
+    lista.addNo(3);
+    lista.addNo(4);
+    lista.addNo(5);
+    lista.addNo(6);
+    lista.addNo(6);
+    lista.addNo(7);
+    lista.addNo(8);
     
+    /* 
+    ############## TESTE BUSCA DE VALOR ##############
+    Retorna um ponteiro para o no de valor 2 e altera o valor para 50
+    Lista Atual: 1, 2, 50, 4, 5, 6, 6, 7, 8
+    */
     
-    teste[3] = 100;
+    no* busca = lista.buscaValor(3);
+    busca->valor = 50;
+
+    /*
+    ############## TESTE DE INDEX ##############
+    Altera a lista na posicao 3 para 100 e a posicao 4 para 2 * lista[3] (200)
+    Lista Atual: 1, 2, 50, 100, 200, 6, 6, 7, 8
+    */
+    lista[3] = 100;
+    lista[4] = lista[3] * 2;
+
+    /*
+    ############## TESTE DE RETIRAR POSICAO ##############
+    Retira a primeira posicao da lista e depois retira a ultima posicao
+    Lista Atual: 2, 50, 100, 200, 6, 6, 7 
+    */
+    lista.retiraUltimo();
+    lista.retiraPrimeiro();
     
-    teste[4] = teste[3] * 2;
 
-    teste.retiraUltimo();
-    teste.retiraPrimeiro();
-    
-    teste.addNoInicio(9);
+    /*
+    ############## TESTE DE ADICIONAR ##############
+    Adiciona 9 no inicio da lista
+    Lista Atual: 10, 11, 10, 9, 2, 50, 100, 200, 6, 6, 7
+    */
+    lista.addNoInicio(9);
+    lista.addNoInicio(10);
+    lista.addNoInicio(11);
+    lista.addNoInicio(10);
 
-    teste.retiraValor(4);
-    teste.retiraTodosValor(6);
+    /*
+    ############## TESTE DE RETIRAR VALOR ##############
+    Retira a primeira ocorrencia do valor 10, e depois todas as ocorrencias do valor 6
+    Lista Atual: 11, 10, 9, 2, 50, 100, 200, 7
+    */
 
-    teste.printLista();
+    lista.retiraValor(10);
+    lista.retiraTodosValor(6);
+
+    /*
+    \############## TESTE DE BUSCA INDEX ##############
+    Busca pelo index da primeira ocorrencia do valor desejado, simuntaneamente usa do index para alterar o valor
+    Lista Atual: 20, 10, 9, 2, 50, 100, 200, 7
+    */
+
+    lista[lista.buscaIndex(11)] = 20;
 
 
-    std::cout << "teste[3] = " << teste[3] << std::endl;
+    lista.printLista();
+
+    std::cout << std::endl << std::endl << "Ponteiro: " << busca << std::endl << "valor: " << busca->valor << std::endl;
+
+    std::cout << "lista[3] = " << lista[3] << std::endl;
 
     return 0;
 }
