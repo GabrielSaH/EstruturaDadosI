@@ -183,10 +183,30 @@ public:
     int& operator[](int index) {
         no* atual = this;
 
-        for (int i(0); i < index; i++) {
-            if (atual == nullptr) exit(1);
+        if (index >= 0){
+            for (int i(0); i < index; i++) {
+                if (atual == nullptr) exit(1);
 
-            atual = atual->next;
+                atual = atual->next;
+            };
+        }
+        
+        if (index  < 0){
+            no* pivo = this;
+            no* atual = this;
+            index = index * (-1);
+            
+            for (int i(1); i < index; i++){
+                pivo = pivo->next;
+                if (pivo == nullptr) exit(1);
+            };
+
+            while (pivo->next != nullptr){
+                atual = atual->next;
+                pivo = pivo->next;
+            }
+
+            return atual->valor;
         };
 
         return atual->valor;
@@ -204,7 +224,7 @@ int main() {
 
     // Lista Inicial: 1, 2, 3, 4, 5, 6, 6, 7, 8
 
-    no lista= no(1);
+    no lista = no(1);
     lista.addNo(2);
     lista.addNo(3);
     lista.addNo(4);
@@ -214,6 +234,7 @@ int main() {
     lista.addNo(7);
     lista.addNo(8);
     
+
     /* 
     ############## TESTE BUSCA DE VALOR ##############
     Retorna um ponteiro para o no de valor 2 e altera o valor para 50
@@ -228,6 +249,7 @@ int main() {
     Altera a lista na posicao 3 para 100 e a posicao 4 para 2 * lista[3] (200)
     Lista Atual: 1, 2, 50, 100, 200, 6, 6, 7, 8
     */
+    
     lista[3] = 100;
     lista[4] = lista[3] * 2;
 
@@ -236,6 +258,7 @@ int main() {
     Retira a primeira posicao da lista e depois retira a ultima posicao
     Lista Atual: 2, 50, 100, 200, 6, 6, 7 
     */
+
     lista.retiraUltimo();
     lista.retiraPrimeiro();
     
@@ -245,6 +268,7 @@ int main() {
     Adiciona 9 no inicio da lista
     Lista Atual: 10, 11, 10, 9, 2, 50, 100, 200, 6, 6, 7
     */
+
     lista.addNoInicio(9);
     lista.addNoInicio(10);
     lista.addNoInicio(11);
@@ -260,7 +284,7 @@ int main() {
     lista.retiraTodosValor(6);
 
     /*
-    \############## TESTE DE BUSCA INDEX ##############
+    ############## TESTE DE BUSCA INDEX ##############
     Busca pelo index da primeira ocorrencia do valor desejado, simuntaneamente usa do index para alterar o valor
     Lista Atual: 20, 10, 9, 2, 50, 100, 200, 7
     */
@@ -273,6 +297,8 @@ int main() {
     std::cout << std::endl << std::endl << "Ponteiro: " << busca << std::endl << "valor: " << busca->getValor() << std::endl;
 
     std::cout << "lista[3] = " << lista[3] << std::endl;
+    std::cout << "lista[-1] = " << lista[-1] << std::endl;
+
 
     return 0;
 }
