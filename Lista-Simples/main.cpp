@@ -2,8 +2,6 @@
 
 class no {
 private:
-
-public:
     no* next;
     int valor;
 
@@ -173,6 +171,15 @@ public:
         return NULL;
     }
 
+    void setValor(int v) {
+        this->valor = v;
+        return;
+    };
+
+    int getValor() const {
+        return this->valor;
+    }
+
     int& operator[](int index) {
         no* atual = this;
 
@@ -214,7 +221,7 @@ int main() {
     */
     
     no* busca = lista.buscaValor(3);
-    busca->valor = 50;
+    busca->setValor(50);
 
     /*
     ############## TESTE DE INDEX ##############
@@ -263,7 +270,7 @@ int main() {
 
     lista.printLista();
 
-    std::cout << std::endl << std::endl << "Ponteiro: " << busca << std::endl << "valor: " << busca->valor << std::endl;
+    std::cout << std::endl << std::endl << "Ponteiro: " << busca << std::endl << "valor: " << busca->getValor() << std::endl;
 
     std::cout << "lista[3] = " << lista[3] << std::endl;
 
