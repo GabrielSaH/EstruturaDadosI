@@ -1,11 +1,13 @@
 Funções da lista:
 
-void addNo : Adiciona um novo nó no final da lista  
+void addNo : Adiciona um novo nó no final da lista.  
 void printLista : Percorre a lista mostrando os valores armazenados em ordem.  
-void retiraUlrimo : Retira o ultimo elemento da lista  
-void retiraValor : Retira a primeira ocorrencia do valor argumento  
-Void retiraTodosValor : Retira todas as ocorrencias do valor argumento  
-void addNoInicio : Adiciona um novo nó no inicio da lista  
+void retiraUltimo : Retira o ultimo elemento da lista.  
+void retiraValor : Retira a primeira ocorrencia do valor argumento.  
+Void retiraTodosValor : Retira todas as ocorrencias do valor argumento.  
+void addNoInicio : Adiciona um novo nó no inicio da lista.  
+no* buscaValor : retorna um ponteiro para o primeiro nó com o valor argumento. (retorna nullptr em falha de busca)  
+int buscaIndex : retorna o index do primeiro nó com o valor argumento. (retorna NULL em falha de busca)  
 
 Overloading feitos:
 
@@ -17,5 +19,5 @@ Obs:
 
 O heading da lista NÂO é um ponteiro, porem, todos os outros nos seguintes são ponteiros.  
 é possivel fazer operaçoes com o index, como minhaLista[0] = minhaLista[2] + minhaLista[1]  
-a operação addNo é a unica feita com recursão.  
+a operação addNo e buscaValor são feitas usando recursão.  
 
